@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://nimrod.life/2019/03/21/HandWrtingKNN/</loc>
+    
+    <lastmod>2019-03-22T00:32:54.199Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://nimrod.life/demos/index.html</loc>
     
-    <lastmod>2019-01-20T02:04:04.506Z</lastmod>
+    <lastmod>2019-03-21T23:35:24.099Z</lastmod>
     
   </url>
   
@@ -93,14 +100,14 @@
   </url>
   
   <url>
-    <loc>http://nimrod.life/tags/index.html</loc>
+    <loc>http://nimrod.life/timeline/index.html</loc>
     
     <lastmod>2018-10-28T08:52:54.709Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://nimrod.life/timeline/index.html</loc>
+    <loc>http://nimrod.life/tags/index.html</loc>
     
     <lastmod>2018-10-28T08:52:54.709Z</lastmod>
     
