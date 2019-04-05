@@ -44,7 +44,7 @@ Explantion: (-2) ^ 2 = 4
 
 这道题看上去比较特别，是负数进制，其实思路和任何进制的转换是一样的。唯一需要注意的地方是当一个数除以一个负数的时候，余数是非正数，而我们需要的是非负数。所以需要进行调整。
 
-![]( http://latex.codecogs.com/gif.latex?d \equiv d - N\  (\textrm{mod}\ N)  N < 0, d < 0, d+N > 0)
+![]( http://latex.codecogs.com/gif.latex?d \equiv d - N \left \textrm{mod}\ N \right  N < 0, d < 0, d+N > 0)
 
  我们需要的余数是计算出的余数减上除数，让它成为正数，而商也要加1，因为我们相当于多除了一次。
 
