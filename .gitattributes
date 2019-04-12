@@ -1,0 +1,3 @@
+*.css linguist-language=HTML
+*.html linguist-language=HTML
+*.js linguist-language=HTML
