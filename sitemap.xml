@@ -2,13 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://nimrod.life/2019/06/17/What-is-Monad/</loc>
-    
-    <lastmod>2019-06-21T03:24:19.605Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://nimrod.life/2019/06/20/Typeclasses-in-Haskell/</loc>
     
     <lastmod>2019-06-21T03:23:46.197Z</lastmod>
@@ -65,7 +58,7 @@
   </url>
   
   <url>
-    <loc>http://nimrod.life/2019/04/03/sword-to-offer-15/</loc>
+    <loc>http://nimrod.life/2019/03/30/sword-to-offer-26/</loc>
     
     <lastmod>2019-04-24T22:39:42.859Z</lastmod>
     
@@ -73,6 +66,13 @@
   
   <url>
     <loc>http://nimrod.life/2019/03/31/sword-to-offer-4/</loc>
+    
+    <lastmod>2019-04-24T22:39:42.859Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nimrod.life/2019/04/03/sword-to-offer-15/</loc>
     
     <lastmod>2019-04-24T22:39:42.859Z</lastmod>
     
@@ -93,13 +93,6 @@
   </url>
   
   <url>
-    <loc>http://nimrod.life/2019/03/30/sword-to-offer-26/</loc>
-    
-    <lastmod>2019-04-24T22:39:42.859Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://nimrod.life/2019/04/12/lazy-evaluation/</loc>
     
     <lastmod>2019-04-24T22:39:42.859Z</lastmod>
@@ -107,28 +100,7 @@
   </url>
   
   <url>
-    <loc>http://nimrod.life/2018/12/31/written-in-the-end/</loc>
-    
-    <lastmod>2019-04-24T22:39:42.858Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://nimrod.life/2018/03/27/2018-3-27-first-markdown/</loc>
-    
-    <lastmod>2019-04-24T22:39:42.858Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://nimrod.life/2018/05/11/2018-5-11-CondaValueError/</loc>
-    
-    <lastmod>2019-04-24T22:39:42.858Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://nimrod.life/2018/07/28/2018-7-28/</loc>
     
     <lastmod>2019-04-24T22:39:42.858Z</lastmod>
     
@@ -142,7 +114,28 @@
   </url>
   
   <url>
+    <loc>http://nimrod.life/2018/05/11/2018-5-11-CondaValueError/</loc>
+    
+    <lastmod>2019-04-24T22:39:42.858Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nimrod.life/2018/12/31/written-in-the-end/</loc>
+    
+    <lastmod>2019-04-24T22:39:42.858Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://nimrod.life/2019/03/21/HandWrtingKNN/</loc>
+    
+    <lastmod>2019-04-24T22:39:42.858Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nimrod.life/2018/07/28/2018-7-28/</loc>
     
     <lastmod>2019-04-24T22:39:42.858Z</lastmod>
     
@@ -156,14 +149,14 @@
   </url>
   
   <url>
-    <loc>http://nimrod.life/2018/09/13/2018-09-13/</loc>
+    <loc>http://nimrod.life/2018/09/26/2018-09-26/</loc>
     
     <lastmod>2019-04-24T22:39:42.857Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://nimrod.life/2018/09/26/2018-09-26/</loc>
+    <loc>http://nimrod.life/2018/09/13/2018-09-13/</loc>
     
     <lastmod>2019-04-24T22:39:42.857Z</lastmod>
     
