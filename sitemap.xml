@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://nimrod.life/about/index.html</loc>
+    
+    <lastmod>2020-04-12T16:25:58.032Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://nimrod.life/2019/06/20/Typeclasses-in-Haskell/</loc>
     
     <lastmod>2019-06-21T03:23:46.197Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>http://nimrod.life/demos/index.html</loc>
     
     <lastmod>2019-04-24T22:39:42.899Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://nimrod.life/about/index.html</loc>
-    
-    <lastmod>2019-04-24T22:39:42.861Z</lastmod>
     
   </url>
   
