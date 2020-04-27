@@ -36,15 +36,15 @@ icons: true
 # NOTICE) Use the fontawesome icon names without the fa- prefix (http://fontawesome.io/cheatsheet/)
 links:
   book: /archives/
-  github-alt: https://github.com/
-  rss: /atom.xml
+  github-alt: https://github.com/Nimrod0901
+  #  rss: /atom.xml
 
 # nav position (top, left. top is default)
 nav: top
 
 # Info
-archive_footer_content: "1"
-post_footer_content: "2"
+archive_footer_content: ""
+post_footer_content: ""
 
 # Gitment
 gitment:
