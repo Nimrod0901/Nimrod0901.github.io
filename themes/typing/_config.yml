@@ -1,0 +1,85 @@
+# Dark Mode
+dark: false
+
+# Header
+menu:
+  Home: /
+  Archives: /archives
+  About: /about
+  Demos: /demos
+
+# Your Feed Location
+#rss: /atom.xml
+
+# Content
+fancybox: true
+
+# Display a "Read More" link under each post's excerpt in /archives page
+#excerpt_link: 'Read More'
+
+# Miscellaneous
+google_analytics:
+favicon: /favicon.ico
+twitter:
+
+
+# Profile
+nickname: Nimrod
+description: 随便写点东西，也不指望有人看
+
+# Load fontawesome icons? Also see the links option
+icons: true
+
+# Footer area links
+# NOTICE) If you set "icons: false" link names will be clear text
+# If "icons: true" link names will interpreted as fontawesome icon names
+# NOTICE) Use the fontawesome icon names without the fa- prefix (http://fontawesome.io/cheatsheet/)
+links:
+  book: /archives/
+  github-alt: https://github.com/
+  rss: /atom.xml
+
+# nav position (top, left. top is default)
+nav: top
+
+# Info
+archive_footer_content: "1"
+post_footer_content: "2"
+
+# Gitment
+gitment:
+  owner:
+  repo:
+  client:
+    id:
+    secret:
+
+# Utterances
+# NOTICE) make sure the app is installed on the repo before using this commit system
+# see https://utteranc.es/ for more
+utterances:
+  enable: false
+  repo: # your repo in this format: 'username/reponame', note that there is no '.git' suffix
+
+# If you want to use valine,you should get the appId and appKey form https://leancloud.cn ,more setting please see https://valine.js.org
+valine:
+  enable: false # !!if you want use valine comment system,please set enable: true
+  appId:  #your leancloud appId
+  appKey:  #your leancloud appKey
+  guest_info: nick,mail,link #valine comment header info
+  placeholder: Just go go # valine comment input placeholder(like: Please leave your footprints )
+  avatar: mm # gravatar style https://valine.js.org/avatar
+  pageSize: 10 # comment list page size
+  verify: false # valine verify code (true/false)
+  notify: false # valine mail notify (true/false)
+  lang: zh-cn
+
+# Donate
+donate:
+  enable: false
+  github: 
+  paypal: 
+  bitcoin: 
+  BTCQR: 
+  AliPayQR: 
+  WeChatQR: 
