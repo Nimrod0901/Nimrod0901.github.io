@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary">
   
   
-    <link rel="icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico">
   
   
 <link rel="stylesheet" href="/css/typing.css">
@@ -39,7 +39,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
   
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.0.2"></head>
 
   
     
@@ -100,7 +100,7 @@
     <div class="e-content article-entry typo" itemprop="articleBody">
       
         <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>地上有一个m行和n列的方格。一个机器人从坐标0,0的格子开始移动，每一次只能向左，右，上，下四个方向移动一格，但是不能进入行坐标和列坐标的数位之和大于k的格子。 例如，当k为18时，机器人能够进入方格（35,37），因为3+5+3+7 = 18。但是，它不能进入方格（35,38），因为3+5+3+8 = 19。请问该机器人能够达到多少个格子？</p>
-<p>链接:<a href="https://www.nowcoder.com/practice/6e5207314b5241fb83f2329e89fdecc8?tpId=13&tqId=11219&tPage=1&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking" target="_blank" rel="noopener">牛客网</a></p>
+<p>链接:<a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/6e5207314b5241fb83f2329e89fdecc8?tpId=13&tqId=11219&tPage=1&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking">牛客网</a></p>
 <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>对于二维网格运动的题目，通常可以用回溯法解决。<br>开辟一个一维数组对应每一个方格，True为机器人可以，False为机器人不可以进入。如果机器人能进入一个点，我们再判断它能否进入上下左右的点。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">movingCount</span><span class="params">(<span class="keyword">int</span> threshold, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (threshold &lt;= <span class="number">0</span> || rows &lt;= <span class="number">0</span> || cols &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">bool</span> *visited = <span class="keyword">new</span> <span class="keyword">bool</span>[rows * cols];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">memset</span>(visited, <span class="literal">false</span>, rows * cols);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> count = helper(threshold, rows, cols, <span class="number">0</span>, <span class="number">0</span>, visited);</span><br><span class="line">    <span class="keyword">delete</span>[] visited;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 辅助函数</span></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">helper</span><span class="params">(<span class="keyword">int</span> threshold, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols, <span class="keyword">int</span> row, <span class="keyword">int</span> col,</span></span></span><br><span class="line"><span class="function"><span class="params">             <span class="keyword">bool</span> *visited)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (visited[row * cols + col] == <span class="literal">false</span> &amp;&amp;</span><br><span class="line">        getSum(row) + getSum(col) &lt;= threshold &amp;&amp; row &lt;= rows &amp;&amp;</span><br><span class="line">        col &lt;= cols &amp;&amp; col &gt;= <span class="number">0</span> &amp;&amp; row &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">      visited[row * cols + col] = <span class="literal">true</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">1</span> + helper(threshold, rows, cols, row + <span class="number">1</span>, col, visited) +</span><br><span class="line">             helper(threshold, rows, cols, row, col + <span class="number">1</span>, visited) +</span><br><span class="line">             helper(threshold, rows, cols, row - <span class="number">1</span>, col, visited) +</span><br><span class="line">             helper(threshold, rows, cols, row, col - <span class="number">1</span>, visited);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 计算一个数的数位和</span></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">getSum</span><span class="params">(<span class="keyword">int</span> number)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (number) &#123;</span><br><span class="line">      sum += number % <span class="number">10</span>;</span><br><span class="line">      number /= <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
@@ -182,7 +182,7 @@
           
             <li><a href="/archives/"><span class="fa fa-book"></span></a></li>
           
-            <li><a href="https://github.com/Nimrod0901" target="_blank" rel="noopener"><span class="fa fa-github-alt"></span></a></li>
+            <li><a target="_blank" rel="noopener" href="https://github.com/Nimrod0901"><span class="fa fa-github-alt"></span></a></li>
           
         </ul>
 	    

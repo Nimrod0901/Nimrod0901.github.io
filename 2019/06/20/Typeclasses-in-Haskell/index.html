@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary">
   
   
-    <link rel="icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico">
   
   
 <link rel="stylesheet" href="/css/typing.css">
@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
   
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.0.2"></head>
 
   
     
@@ -113,7 +113,7 @@
 <p>在Haskell中，Type Class的存在就是为了支持Ad-hoc polymorphism，<code>+</code>的type既不是某一种特定的类型<code>Int -&gt; Int -&gt; Bool</code>，也不是宽泛的任何类型<code>a -&gt; a -&gt; Bool</code>，我们希望的是所有应该支持<code>+</code>的类型。</p>
 <h1 id="什么是Type-Class"><a href="#什么是Type-Class" class="headerlink" title="什么是Type Class"></a>什么是Type Class</h1><p><strong>Type class</strong>可以理解为定义满足某种行为的集合，如果某一个type是一个type class的实例，那么这个type一定支持这个type class所定义的行为。</p>
 <p>比如<code>Eq</code></p>
-<figure class="highlight haskell"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">Eq</span> a <span class="keyword">where</span></span></span><br><span class="line">	(==) :: a -&gt; a -&gt; <span class="type">Bool</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">Eq</span> a <span class="keyword">where</span></span></span><br><span class="line">    (==) :: a -&gt; a -&gt; <span class="type">Bool</span></span><br></pre></td></tr></table></figure>
 
 <p><code>Eq</code>的存在让我们能够为满足特定行为的class写重载函数，这里这种特定行为就是<code>==</code>在这些class中被定义。</p>
 <p>当我们需要某一个类能够支持某种type class的时候，我们使用<code>instance</code></p>
@@ -124,18 +124,18 @@
 <figure class="highlight haskell"><table><tr><td class="code"><pre><span class="line"><span class="title">myFun</span> :: <span class="type">Eq</span> a =&gt; a -&gt; b -&gt; a</span><br></pre></td></tr></table></figure>
 
 <h2 id="自定义Type-class"><a href="#自定义Type-class" class="headerlink" title="自定义Type class"></a>自定义Type class</h2><p>我们当然也可以自己定义自己的Type class，就像<code>Eq</code>一样，根据我们具体需要哪些特定行为规定需要定义哪些函数才能成为这个Type calss的实例。比如我们设计一种可数的Type class，我们希望任何满足这种行为的type都可以转换为<code>Int</code></p>
-<figure class="highlight haskell"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">Countable</span> a <span class="keyword">where</span></span></span><br><span class="line">	count :: a -&gt; <span class="type">Int</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">Countable</span> a <span class="keyword">where</span></span></span><br><span class="line">    count :: a -&gt; <span class="type">Int</span></span><br></pre></td></tr></table></figure>
 
 <p> 比如我们希望<code>String</code>可数，它的数量就是它的长度。</p>
-<figure class="highlight haskell"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">instance</span> <span class="type">Countable</span> <span class="type">String</span> <span class="keyword">where</span></span></span><br><span class="line">	count [] = <span class="number">0</span></span><br><span class="line">	count (x:xs) = <span class="number">1</span> + count xs</span><br></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">instance</span> <span class="type">Countable</span> <span class="type">String</span> <span class="keyword">where</span></span></span><br><span class="line">    count [] = <span class="number">0</span></span><br><span class="line">    count (x:xs) = <span class="number">1</span> + count xs</span><br></pre></td></tr></table></figure>
 
 <p>这样就完成了<code>String</code>对我们自定义的<code>Countable</code>类的实例化。</p>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>在Haskell中，除了<code>Eq</code>之外还有许多其他内置Type class，比如<code>Show</code>，<code>Num</code>等等，这里就不一一赘述。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这里简单的解释了Haskell中的Type class，如果想更深入的了解，个人推荐<a href="http://learnyouahaskell.com/types-and-typeclasses" target="_blank" rel="noopener">Types and Typeclasses - Learn You a Haskell for Great Good!</a>这篇文章和其他相关文章，讲的非常清晰易懂。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这里简单的解释了Haskell中的Type class，如果想更深入的了解，个人推荐<a target="_blank" rel="noopener" href="http://learnyouahaskell.com/types-and-typeclasses">Types and Typeclasses - Learn You a Haskell for Great Good!</a>这篇文章和其他相关文章，讲的非常清晰易懂。</p>
 <h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ol>
-<li><a href="https://wiki.haskell.org/Polymorphism" target="_blank" rel="noopener">Polymorphism - HaskellWiki - Haskell.org</a></li>
-<li><a href="https://www.haskell.org/tutorial/classes.html" target="_blank" rel="noopener">Type Classes - Haskell.org</a></li>
-<li><a href="http://learnyouahaskell.com/types-and-typeclasses" target="_blank" rel="noopener">Types and Typeclasses - Learn You a Haskell for Great Good!</a></li>
+<li><a target="_blank" rel="noopener" href="https://wiki.haskell.org/Polymorphism">Polymorphism - HaskellWiki - Haskell.org</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.haskell.org/tutorial/classes.html">Type Classes - Haskell.org</a></li>
+<li><a target="_blank" rel="noopener" href="http://learnyouahaskell.com/types-and-typeclasses">Types and Typeclasses - Learn You a Haskell for Great Good!</a></li>
 </ol>
 
       
@@ -168,7 +168,14 @@
     
 <nav id="article-nav" class="article-nav">
   
-    <span id="article-nav-newer" class="article-nav-link-wrap newer"></span>
+    <a href="/2020/08/18/Your-problem-with-Vim-is-that-you-don-t-grok-vi/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          你不爱VI，所以你不懂Vim
+        
+      </div>
+    </a>
   
   
     <a href="/2019/04/24/Questions-to-interviewer/" id="article-nav-older" class="article-nav-link-wrap older">
@@ -199,7 +206,7 @@
           
             <li><a href="/archives/"><span class="fa fa-book"></span></a></li>
           
-            <li><a href="https://github.com/Nimrod0901" target="_blank" rel="noopener"><span class="fa fa-github-alt"></span></a></li>
+            <li><a target="_blank" rel="noopener" href="https://github.com/Nimrod0901"><span class="fa fa-github-alt"></span></a></li>
           
         </ul>
 	    

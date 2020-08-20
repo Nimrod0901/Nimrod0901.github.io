@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary">
   
   
-    <link rel="icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico">
   
   
 <link rel="stylesheet" href="/css/typing.css">
@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
   
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.0.2"></head>
 
   
     
@@ -97,20 +97,20 @@
     
     <div class="e-content article-entry typo" itemprop="articleBody">
       
-        <h1 id="什么是惰性求值？"><a href="#什么是惰性求值？" class="headerlink" title="什么是惰性求值？"></a>什么是惰性求值？</h1><p><a href="https://en.wikipedia.org/wiki/Lazy_evaluation" target="_blank" rel="noopener"><strong>惰性求值(Lazy Evaluation)</strong></a>，简言之就是直到需要的时候再求值，表达式不再被绑定到变量的时候立即计算出来，而是在当值被取用的时候才计算。与之相反的是<a href="https://en.wikipedia.org/wiki/Eager_evaluation" target="_blank" rel="noopener"><strong>及早求值(Early Evaluation)</strong></a>，也就是一旦出现一个数或者表达式，就去计算它。及早求值是绝大多数传统编程语言中的求值策略。</p>
+        <h1 id="什么是惰性求值？"><a href="#什么是惰性求值？" class="headerlink" title="什么是惰性求值？"></a>什么是惰性求值？</h1><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Lazy_evaluation"><strong>惰性求值(Lazy Evaluation)</strong></a>，简言之就是直到需要的时候再求值，表达式不再被绑定到变量的时候立即计算出来，而是在当值被取用的时候才计算。与之相反的是<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Eager_evaluation"><strong>及早求值(Early Evaluation)</strong></a>，也就是一旦出现一个数或者表达式，就去计算它。及早求值是绝大多数传统编程语言中的求值策略。</p>
 <h1 id="惰性求值的优点"><a href="#惰性求值的优点" class="headerlink" title="惰性求值的优点"></a>惰性求值的优点</h1><p>惰性求值的最大优点就是<strong>减少内存开销</strong>，不用保存所有数据，只有当需要用到某个数据的时候，再计算它即可。</p>
 <p>另外一个优点就是可以通过惰性求值制造出一个<strong>无限大</strong>的数据类型。</p>
-<h1 id="Python中的惰性求值生成器-generator"><a href="#Python中的惰性求值生成器-generator" class="headerlink" title="Python中的惰性求值生成器(generator)"></a>Python中的惰性求值生成器(generator)</h1><p>Python中的<a href="https://wiki.python.org/moin/Generators" target="_blank" rel="noopener"><strong>生成器</strong></a>就是一个典型的惰性求值的例子。</p>
+<h1 id="Python中的惰性求值生成器-generator"><a href="#Python中的惰性求值生成器-generator" class="headerlink" title="Python中的惰性求值生成器(generator)"></a>Python中的惰性求值生成器(generator)</h1><p>Python中的<a target="_blank" rel="noopener" href="https://wiki.python.org/moin/Generators"><strong>生成器</strong></a>就是一个典型的惰性求值的例子。</p>
 <p>当我们需要计算一个非常大的序列的时候，甚至无限的时候，我们就可以使用生成器。</p>
 <p>看一个例子</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">()</span>:</span></span><br><span class="line">  a, b = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">  <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">yield</span> a</span><br><span class="line">    a, b = b, a + b</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span>():</span></span><br><span class="line">  a, b = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">  <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">yield</span> a</span><br><span class="line">    a, b = b, a + b</span><br></pre></td></tr></table></figure>
 <p>我们通过<code>yield</code>关键词将一个函数fib变成一个生成器函数，与普通函数不同，生成器函数只能用于迭代操作，它的一个特征是只会回应再在迭代中用到的next操作。</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; f = fib()  <span class="comment"># f是一个生成器</span></span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; f</span></span><br><span class="line">&lt;generator object fib at 0x7fe5b0259bf8&gt;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; next(f)</span></span><br><span class="line">0</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; next(f)</span></span><br><span class="line">1</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; next(f)</span></span><br><span class="line">1</span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果没有终止条件，可以无限下去</span></span><br></pre></td></tr></table></figure>
 
 <p>但是生成器不可以生成之前已经生成的元素，如果想要生成那些数，只能重新创建一个生成器对象，或者将需要的数存储起来。</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; r = range(100)</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; import sys</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; sys.getsizeof(r)</span></span><br><span class="line">48</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; list(range(100))</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; sys.getsizeof(l)</span></span><br><span class="line">1008</span><br></pre></td></tr></table></figure>
 <p>这里就体现出生成器节省内存的地方了。</p>
-<h1 id="自定义延迟属性"><a href="#自定义延迟属性" class="headerlink" title="*自定义延迟属性"></a>*自定义延迟属性</h1><p>如果我们想自定义一个类似的惰性计算的数据类型，可以使用一个描述器类。具体可以看<a href="https://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p10_using_lazily_computed_properties.html?highlight=lazy" target="_blank" rel="noopener">这里</a>。</p>
+<h1 id="自定义延迟属性"><a href="#自定义延迟属性" class="headerlink" title="*自定义延迟属性"></a>*自定义延迟属性</h1><p>如果我们想自定义一个类似的惰性计算的数据类型，可以使用一个描述器类。具体可以看<a target="_blank" rel="noopener" href="https://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p10_using_lazily_computed_properties.html?highlight=lazy">这里</a>。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>Python中的惰性求值主要是通过生成器，当然还有别的一些方法，例如<code>zip()</code>。惰性求值可以节省内存， 可以创造出无限的数据类型，前提是牺牲了存储前值的代价。</p>
 
       
@@ -191,7 +191,7 @@
           
             <li><a href="/archives/"><span class="fa fa-book"></span></a></li>
           
-            <li><a href="https://github.com/Nimrod0901" target="_blank" rel="noopener"><span class="fa fa-github-alt"></span></a></li>
+            <li><a target="_blank" rel="noopener" href="https://github.com/Nimrod0901"><span class="fa fa-github-alt"></span></a></li>
           
         </ul>
 	    
