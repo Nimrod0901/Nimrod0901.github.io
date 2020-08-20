@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  
+  <title>编辑距离(Edit Distance)问题 | Nimrod&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="背景介绍编辑距离是针对两个字符串的差异程度的量化量测，量测方式是看至少需要多少次的处理才能将一个字符串变成另一个字符串。而编辑距离也有不同的定义，这里讲的是最为常用的莱文斯坦距离，而常常提到编辑距离时候也指的就是莱文斯坦距离，为表述方便，下文‘编辑距离’都特指‘莱文斯坦距离’。编辑距离常常被应用于拼写纠错，DNA分析，机器翻译，信息提取，语音识别等领域。  问题描述给定两个字符串A, B，只允许以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编辑距离(Edit Distance)问题">
+<meta property="og:url" content="http://nimrod.life/2018/11/28/edit-distance/index.html">
+<meta property="og:site_name" content="Nimrod&#39;s blog">
+<meta property="og:description" content="背景介绍编辑距离是针对两个字符串的差异程度的量化量测，量测方式是看至少需要多少次的处理才能将一个字符串变成另一个字符串。而编辑距离也有不同的定义，这里讲的是最为常用的莱文斯坦距离，而常常提到编辑距离时候也指的就是莱文斯坦距离，为表述方便，下文‘编辑距离’都特指‘莱文斯坦距离’。编辑距离常常被应用于拼写纠错，DNA分析，机器翻译，信息提取，语音识别等领域。  问题描述给定两个字符串A, B，只允许以">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/01/FnJgVH.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/01/Fn699U.gif">
+<meta property="article:published_time" content="2018-11-28T01:48:36.000Z">
+<meta property="article:modified_time" content="2019-04-24T22:39:42.860Z">
+<meta property="article:author" content="Nimrod">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="DP">
+<meta property="article:tag" content="字符串">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/12/01/FnJgVH.jpg">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/typing.css">
+
+  
+<link rel="stylesheet" href="/css/donate.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1/css/fork-awesome.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-edit-distance" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">Nimrod&#39;s Blog</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a id="menu-button">&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+        <a href="/demos">Demos</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+	  <a class="main-nav-link" href="/demos">Demos</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      编辑距离(Edit Distance)问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry typo" itemprop="articleBody">
+      
+        <h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h1><p><strong>编辑距离</strong>是针对两个字符串的差异程度的量化量测，量测方式是看至少需要多少次的处理才能将一个字符串变成另一个字符串。<br>而编辑距离也有不同的定义，这里讲的是最为常用的<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Levenshtein_distance">莱文斯坦距离</a>，而常常提到编辑距离时候也指的就是莱文斯坦距离，为表述方便，下文‘编辑距离’都特指‘莱文斯坦距离’。<br>编辑距离常常被应用于拼写纠错，DNA分析，机器翻译，信息提取，语音识别等领域。</p>
+<p><img src="https://s1.ax1x.com/2018/12/01/FnJgVH.jpg" alt="图片来自于MIT CS124公开课课件"></p>
+<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>给定两个字符串A, B，只允许以下三中操作：</p>
+<ul>
+<li>删除(Delete)一个字符</li>
+<li>插入(Insert)一个字符</li>
+<li>替换(Subtitute)一个字符</li>
+</ul>
+<p>计算将A转换成B的最少操作次数，也就是所谓的编辑距离。</p>
+<h1 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h1><p>A串abbcc，B串abcde，将abbcc变为abcde的最小处理方式如下：</p>
+<ul>
+<li>a<strong>b</strong>bcc → abcc（删除b）</li>
+<li>abc<strong>c</strong> → abc<strong>d</strong>（将c改为d）</li>
+<li>abcd → abcd<strong>e</strong>（最后加入g）<br>所以abbcc=&gt;abcde的编辑距离为3</li>
+</ul>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>把这个问题用动态规划的方法分解成相似的子问题。<br>设A串的长度为m，<code>a[1..m]</code>，B串的长度为n,<code>b[1..n]</code>，设<code>edit[i][j]</code>为从长度为i的A的前缀到长度为j的B的前缀的编辑距离(<code>a[1..i]</code>=&gt;<code>b[1..j]</code>)，于是问题就被转换为计算<code>edit[m][n]</code>。</p>
+<p>考虑以下情况：</p>
+<ul>
+<li><code>a[i] == b[j]</code><br><code>edit[i][j] = edit[i-1][j-1]</code>，比如abc=&gt;edc的编辑距离就等于ab=&gt;ed的编辑距离</li>
+<li><code>a[i] != b[j]</code>,取下面三种情况中的最小值：<ul>
+<li>考虑删除<code>a[i]</code><br>比如abc=&gt;cde，删除c，转换为ab=&gt;cde的编辑距离+1，<code>edit[i][j] = edit[i-1][j] + 1</code></li>
+<li>考虑在<code>a[i]</code>后插入<code>b[j]</code><br>比如abc=&gt;cde，在c后面插入e，转换为abce=&gt;cde的编辑距离+1， 根据<code>a[i] == b[j]</code>的情况， 又等于abc=&gt;cd的编辑距离+1<code>edit[i][j] = edit[i][j-1] + 1</code></li>
+<li>考虑将<code>a[i]</code>替换成<code>b[j]</code><br>比如abc=&gt;cde，将c替换成e，转换成abe=&gt;cde的编辑距离+1，又等于ab=&gt;cd的编辑距离+1，<code>edit[i][j] = edit[i-1][j-1] + 1</code></li>
+</ul>
+</li>
+</ul>
+<p>边界情况：</p>
+<ul>
+<li><code>edit[0][j] = j</code>，A串为空，插入<code>b[1..j]</code>，插入j次</li>
+<li><code>edit[i][0] = i</code>，B串为空，删除<code>a[1..i]</code>，删除i次</li>
+</ul>
+<p>递推式：</p>
+<p><img src="https://s1.ax1x.com/2018/12/01/Fn699U.gif" alt="Fn699U.gif"></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>有了递推式，我们就可以愉快的dp啦，下面是Python代码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">edit_distance</span>(<span class="params">a, b</span>):</span></span><br><span class="line">    m, n = len(a), len(b)</span><br><span class="line">    edit = np.zeros((m+<span class="number">1</span>, n+<span class="number">1</span>), dtype=np.int)</span><br><span class="line">    </span><br><span class="line">    edit[<span class="number">0</span>] = [j <span class="keyword">for</span> j <span class="keyword">in</span> range(n + <span class="number">1</span>)] <span class="comment"># 边界edit[0][j] = j</span></span><br><span class="line">    edit[:, <span class="number">0</span>] = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(m + <span class="number">1</span>)] <span class="comment"># 边界edit[i][0] = i</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, m + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> a[i - <span class="number">1</span>] == b[j - <span class="number">1</span>]:</span><br><span class="line">                edit[i][j] = edit[i - <span class="number">1</span>][j - <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                edit[i][j] = min(edit[i - <span class="number">1</span>][j] + <span class="number">1</span>, <span class="comment"># 删除</span></span><br><span class="line">                                edit[i][j - <span class="number">1</span>] + <span class="number">1</span>, <span class="comment"># 插入</span></span><br><span class="line">                                edit[i - <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">1</span>) <span class="comment"># 替换</span></span><br><span class="line">    <span class="keyword">return</span> edit[m][n]</span><br></pre></td></tr></table></figure>
+
+<p>很容易看出来时间复杂度是<code>O(mn)</code>，空间复杂度也是<code>O(mn)</code></p>
+<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>在计算动态规划矩阵的过程中，每一个元素的值只与它左、上和左上角的元素有关，每一行的计算只依赖上一行的值，所以我们可以改用一个长度为n的一维数组。</p>
+<p>在根据边界情况<code>edit[0][j] = j</code>初始化一维数组之后，在每次从<code>edit[0]</code>计算开始，我们应该先存储<code>edit[0]</code>，因为它是<code>edit[1]</code>的左上角，同时根边界情况<code>edit[i][0] = i</code>将<code>edit[0]</code>改成行号的值，然后从<code>edit[1]</code>算起，每次计算之前都需要将<code>edit[j]</code>存起来因为它是<code>edit[j+1]</code>的左上角</p>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">edit_distance</span>(<span class="params">a, b</span>):</span></span><br><span class="line">    m, n = len(a), len(b)</span><br><span class="line">    edit = np.zeros(n+<span class="number">1</span> , dtype=np.int)</span><br><span class="line">    edit = [j <span class="keyword">for</span> j <span class="keyword">in</span> range(n + <span class="number">1</span>)]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, m + <span class="number">1</span>):</span><br><span class="line">        old = edit[<span class="number">0</span>]</span><br><span class="line">        edit[<span class="number">0</span>] = i</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">            temp = edit[j]</span><br><span class="line">            <span class="keyword">if</span> a[i - <span class="number">1</span>] == b[j - <span class="number">1</span>]:</span><br><span class="line">                edit[j] = old</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                edit[j] = min(edit[j<span class="number">-1</span>] + <span class="number">1</span>, <span class="comment"># 删除</span></span><br><span class="line">                                edit[j] + <span class="number">1</span>, <span class="comment"># 插入</span></span><br><span class="line">                                old + <span class="number">1</span>) <span class="comment"># 替换</span></span><br><span class="line">            old = temp</span><br><span class="line">    <span class="keyword">return</span> edit[n]</span><br></pre></td></tr></table></figure>
+<p>优化后的空间复杂度就变成了<code>O(n)</code></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://web.stanford.edu/class/cs124/lec/med.pdf">MIT CS124课件</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.dreamxu.com/books/dsa/dp/edit-distance.html">编辑距离</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Edit_distance">Edit distance - Wikipedia</a></li>
+</ul>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2018/11/28/edit-distance/" class="article-date">
+  <time class="dt-published" datetime="2018-11-28T01:48:36.000Z" itemprop="datePublished">2018-11-28</time>
+</a>
+
+        </li>
+        
+          <li>
+            <span class="label">Category:</span>
+            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%90%91/">技术向</a>
+  </div>
+
+
+          </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DP/" rel="tag">DP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2018/12/01/substring-in-edit-distance/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          编辑距离解决字符串模糊匹配问题(Approximate string matching)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/10/12/2018-10-12/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">zlib库替换导致Ubuntu无法上网解决办法</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+        <ul class="footer-links">
+          
+            <li><a href="/archives/"><span class="fa fa-book"></span></a></li>
+          
+            <li><a target="_blank" rel="noopener" href="https://github.com/Nimrod0901"><span class="fa fa-github-alt"></span></a></li>
+          
+        </ul>
+	    
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/typing.js"></script>
+
+<!--[if lt IE 9]>
+<script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script>
+<![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

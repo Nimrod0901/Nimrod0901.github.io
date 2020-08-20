@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  
+  <title>Haskell中的Type Classes | Nimrod&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="从Type说起在Haskell中，所有表达式都有type, 每一个表达式的type都在编译期被确定，所以在运行之前编译器就能够及时发现错误。作为一个强静态类型语言，Haskell有类型推导的能力，这意味着你不用明确表达式的类型，编译器也能够推导出来。 Haskell有个非常重要的特性就是多态(Polymorphism)，而多态又通常分为两种：Parametric polymorphism和Ad-h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Haskell中的Type Classes">
+<meta property="og:url" content="http://nimrod.life/2019/06/20/Typeclasses-in-Haskell/index.html">
+<meta property="og:site_name" content="Nimrod&#39;s blog">
+<meta property="og:description" content="从Type说起在Haskell中，所有表达式都有type, 每一个表达式的type都在编译期被确定，所以在运行之前编译器就能够及时发现错误。作为一个强静态类型语言，Haskell有类型推导的能力，这意味着你不用明确表达式的类型，编译器也能够推导出来。 Haskell有个非常重要的特性就是多态(Polymorphism)，而多态又通常分为两种：Parametric polymorphism和Ad-h">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-06-20T03:04:12.000Z">
+<meta property="article:modified_time" content="2019-06-21T03:23:46.197Z">
+<meta property="article:author" content="Nimrod">
+<meta property="article:tag" content="Haskell">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/typing.css">
+
+  
+<link rel="stylesheet" href="/css/donate.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1/css/fork-awesome.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-Typeclasses-in-Haskell" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">Nimrod&#39;s Blog</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a id="menu-button">&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+        <a href="/demos">Demos</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+	  <a class="main-nav-link" href="/demos">Demos</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Haskell中的Type Classes
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry typo" itemprop="articleBody">
+      
+        <h1 id="从Type说起"><a href="#从Type说起" class="headerlink" title="从Type说起"></a>从Type说起</h1><p>在Haskell中，所有表达式都有type, 每一个表达式的type都在编译期被确定，所以在运行之前编译器就能够及时发现错误。作为一个强静态类型语言，Haskell有类型推导的能力，这意味着你不用明确表达式的类型，编译器也能够推导出来。</p>
+<p>Haskell有个非常重要的特性就是多态(Polymorphism)，而多态又通常分为两种：Parametric polymorphism和Ad-hoc polymorphism。</p>
+<p>##Parametric polymorphism </p>
+<p>Parametric polymorphism针对一切type，它对type没有任何限制。不同type的输入，达到的效果应该是一样的。比如以下这个例子：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">λ&gt; :t head</span><br><span class="line">head :: [a] -&gt; a</span><br></pre></td></tr></table></figure>
+
+<p>head函数作用是获取列表的第一个元素，无论我们传入一个<code>[Int]</code>还是<code>[Char]</code>，head函数作用的结果都是获取第一个元素，和传入的type并无关系。</p>
+<h2 id="Ad-hoc-polymorphism"><a href="#Ad-hoc-polymorphism" class="headerlink" title="Ad-hoc polymorphism"></a>Ad-hoc polymorphism</h2><p>Ad-hoc polymorphism，也就是所谓的overloading(重载)，同样的函数针对不同的type产生不同的作用。一个最典型的例子就是<code>+</code>（这个例子仅仅为了说明Ad-hoc polymorphism，并不满足Haskell），我们根据输入的类型来确定产生如何的作用——</p>
+<ul>
+<li>1 + 2 = 3</li>
+<li>“aaa” + “bbb” = “aaabbb”</li>
+<li>[1, 2] + [3]</li>
+</ul>
+<p>在Haskell中，Type Class的存在就是为了支持Ad-hoc polymorphism，<code>+</code>的type既不是某一种特定的类型<code>Int -&gt; Int -&gt; Bool</code>，也不是宽泛的任何类型<code>a -&gt; a -&gt; Bool</code>，我们希望的是所有应该支持<code>+</code>的类型。</p>
+<h1 id="什么是Type-Class"><a href="#什么是Type-Class" class="headerlink" title="什么是Type Class"></a>什么是Type Class</h1><p><strong>Type class</strong>可以理解为定义满足某种行为的集合，如果某一个type是一个type class的实例，那么这个type一定支持这个type class所定义的行为。</p>
+<p>比如<code>Eq</code></p>
+<figure class="highlight haskell"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">Eq</span> a <span class="keyword">where</span></span></span><br><span class="line">    (==) :: a -&gt; a -&gt; <span class="type">Bool</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Eq</code>的存在让我们能够为满足特定行为的class写重载函数，这里这种特定行为就是<code>==</code>在这些class中被定义。</p>
+<p>当我们需要某一个类能够支持某种type class的时候，我们使用<code>instance</code></p>
+<figure class="highlight haskell"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">data</span> <span class="type">Myclass</span> = <span class="type">Err</span> <span class="type">String</span> | <span class="type">Val</span> <span class="type">Int</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">instance</span> <span class="type">Eq</span> <span class="type">Myclass</span> <span class="keyword">where</span></span></span><br><span class="line">  (<span class="type">Err</span> x) == (<span class="type">Err</span> y) = x == y</span><br><span class="line">  (<span class="type">Val</span> x) == (<span class="type">Val</span> y) = x == y</span><br><span class="line">  _       == _       = <span class="type">False</span></span><br></pre></td></tr></table></figure>
+
+<p>注意到我们使用到了<code>String</code>和<code>Int</code>的<code>Eq</code>，因为他们已经是<code>Eq</code>的实例了。</p>
+<p>当我们在为某种type class编写函数的时候，我们需要用(=&gt;)来指定这种类型，它需要被置于类型声明之前。</p>
+<figure class="highlight haskell"><table><tr><td class="code"><pre><span class="line"><span class="title">myFun</span> :: <span class="type">Eq</span> a =&gt; a -&gt; b -&gt; a</span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义Type-class"><a href="#自定义Type-class" class="headerlink" title="自定义Type class"></a>自定义Type class</h2><p>我们当然也可以自己定义自己的Type class，就像<code>Eq</code>一样，根据我们具体需要哪些特定行为规定需要定义哪些函数才能成为这个Type calss的实例。比如我们设计一种可数的Type class，我们希望任何满足这种行为的type都可以转换为<code>Int</code></p>
+<figure class="highlight haskell"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">Countable</span> a <span class="keyword">where</span></span></span><br><span class="line">    count :: a -&gt; <span class="type">Int</span></span><br></pre></td></tr></table></figure>
+
+<p> 比如我们希望<code>String</code>可数，它的数量就是它的长度。</p>
+<figure class="highlight haskell"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">instance</span> <span class="type">Countable</span> <span class="type">String</span> <span class="keyword">where</span></span></span><br><span class="line">    count [] = <span class="number">0</span></span><br><span class="line">    count (x:xs) = <span class="number">1</span> + count xs</span><br></pre></td></tr></table></figure>
+
+<p>这样就完成了<code>String</code>对我们自定义的<code>Countable</code>类的实例化。</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>在Haskell中，除了<code>Eq</code>之外还有许多其他内置Type class，比如<code>Show</code>，<code>Num</code>等等，这里就不一一赘述。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这里简单的解释了Haskell中的Type class，如果想更深入的了解，个人推荐<a target="_blank" rel="noopener" href="http://learnyouahaskell.com/types-and-typeclasses">Types and Typeclasses - Learn You a Haskell for Great Good!</a>这篇文章和其他相关文章，讲的非常清晰易懂。</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://wiki.haskell.org/Polymorphism">Polymorphism - HaskellWiki - Haskell.org</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.haskell.org/tutorial/classes.html">Type Classes - Haskell.org</a></li>
+<li><a target="_blank" rel="noopener" href="http://learnyouahaskell.com/types-and-typeclasses">Types and Typeclasses - Learn You a Haskell for Great Good!</a></li>
+</ol>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2019/06/20/Typeclasses-in-Haskell/" class="article-date">
+  <time class="dt-published" datetime="2019-06-20T03:04:12.000Z" itemprop="datePublished">2019-06-20</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Haskell/" rel="tag">Haskell</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2020/08/18/Your-problem-with-Vim-is-that-you-don-t-grok-vi/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          你不爱VI，所以你不懂Vim
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/04/24/Questions-to-interviewer/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">当面试官问&#34;你有什么想问的&#34;的时候，你该问什么。</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+        <ul class="footer-links">
+          
+            <li><a href="/archives/"><span class="fa fa-book"></span></a></li>
+          
+            <li><a target="_blank" rel="noopener" href="https://github.com/Nimrod0901"><span class="fa fa-github-alt"></span></a></li>
+          
+        </ul>
+	    
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/typing.js"></script>
+
+<!--[if lt IE 9]>
+<script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script>
+<![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

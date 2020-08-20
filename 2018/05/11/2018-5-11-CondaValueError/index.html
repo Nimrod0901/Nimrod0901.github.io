@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  
+  <title>Conda&#34;EnvironmentLocationNotFound&#34;错误解决方案 | Nimrod&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="今天用Conda的时候弹出来个错误 EnvironmentLocationNotFound: Not a conda environment.. 解决方案: 进入出现问题的目录 进入..\Anaconda3\pkgs\nb_conda-2.2.0-py36_0\Lib\site-packages\nb_conda(具体目录也许不同) 打开envmanager.py文件 替换for env in i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Conda&quot;EnvironmentLocationNotFound&quot;错误解决方案">
+<meta property="og:url" content="http://nimrod.life/2018/05/11/2018-5-11-CondaValueError/index.html">
+<meta property="og:site_name" content="Nimrod&#39;s blog">
+<meta property="og:description" content="今天用Conda的时候弹出来个错误 EnvironmentLocationNotFound: Not a conda environment.. 解决方案: 进入出现问题的目录 进入..\Anaconda3\pkgs\nb_conda-2.2.0-py36_0\Lib\site-packages\nb_conda(具体目录也许不同) 打开envmanager.py文件 替换for env in i">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-05-10T16:00:00.000Z">
+<meta property="article:modified_time" content="2019-04-24T22:39:42.858Z">
+<meta property="article:author" content="Nimrod">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Anaconda">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/typing.css">
+
+  
+<link rel="stylesheet" href="/css/donate.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1/css/fork-awesome.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-2018-5-11-CondaValueError" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">Nimrod&#39;s Blog</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a id="menu-button">&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+        <a href="/demos">Demos</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+	  <a class="main-nav-link" href="/demos">Demos</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Conda&#34;EnvironmentLocationNotFound&#34;错误解决方案
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry typo" itemprop="articleBody">
+      
+        <p>今天用Conda的时候弹出来个错误</p>
+<p><code>EnvironmentLocationNotFound: Not a conda environment..</code></p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案:"></a><strong>解决方案:</strong></h1><ul>
+<li>进入出现问题的目录</li>
+<li>进入<code>..\Anaconda3\pkgs\nb_conda-2.2.0-py36_0\Lib\site-packages\nb_conda</code>(具体目录也许不同)</li>
+<li>打开<code>envmanager.py</code>文件</li>
+<li>替换<code>for env in info[&#39;envs&#39;]]</code>为<code>for env in info[&#39;envs&#39;] if env != info[&#39;root_prefix&#39;]]</code></li>
+</ul>
+<h1 id="错误原因："><a href="#错误原因：" class="headerlink" title="错误原因："></a>错误原因：</h1><p>之前版本conda是<code>envs=[]</code>,而4.4版本之后<code>envs=[root_env_dir]</code>，然而这个目录通常并不是空的，官方可能在后续的更新中解决这个问题。</p>
+<h1 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h1><p><a target="_blank" rel="noopener" href="https://github.com/Anaconda-Platform/nb_conda/issues/66">https://github.com/Anaconda-Platform/nb_conda/issues/66</a></p>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2018/05/11/2018-5-11-CondaValueError/" class="article-date">
+  <time class="dt-published" datetime="2018-05-10T16:00:00.000Z" itemprop="datePublished">2018-05-11</time>
+</a>
+
+        </li>
+        
+          <li>
+            <span class="label">Category:</span>
+            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%90%91/">技术向</a>
+  </div>
+
+
+          </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Anaconda/" rel="tag">Anaconda</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2018/07/28/2018-7-28/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          从jekyll到hexo
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/04/16/2018-4-16-April/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">四月随笔</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+        <ul class="footer-links">
+          
+            <li><a href="/archives/"><span class="fa fa-book"></span></a></li>
+          
+            <li><a target="_blank" rel="noopener" href="https://github.com/Nimrod0901"><span class="fa fa-github-alt"></span></a></li>
+          
+        </ul>
+	    
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/typing.js"></script>
+
+<!--[if lt IE 9]>
+<script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script>
+<![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>
