@@ -4,7 +4,6 @@ date: 2019-04-12 11:32:40
 categories: 技术向
 tags: 
     - 惰性求值
-    - 
 ---
 
 # 什么是惰性求值？
@@ -59,7 +58,7 @@ def fib():
 ```
 这里就体现出生成器节省内存的地方了。
 
-# *自定义延迟属性
+# 自定义延迟属性
 
 如果我们想自定义一个类似的惰性计算的数据类型，可以使用一个描述器类。具体可以看[这里](https://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p10_using_lazily_computed_properties.html?highlight=lazy)。
 

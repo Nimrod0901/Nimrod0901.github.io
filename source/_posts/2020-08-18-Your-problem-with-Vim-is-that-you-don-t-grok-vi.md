@@ -2,7 +2,8 @@
 title: 你不爱VI，所以你不懂Vim
 date: 2020-08-18 02:16:56
 categories:
-tags:
+tags: 
+	- Vim
 ---
 
 
