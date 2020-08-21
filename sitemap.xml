@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://nimrod.life/2019/04/12/lazy-evaluation/</loc>
+    
+    <lastmod>2020-08-21</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nimrod.life/2020/08/18/Your-problem-with-Vim-is-that-you-don-t-grok-vi/</loc>
+    
+    <lastmod>2020-08-21</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://nimrod.life/timeline/index.html</loc>
     
     <lastmod>2020-08-21</lastmod>
@@ -24,13 +38,6 @@
   
   <url>
     <loc>http://nimrod.life/about/index.html</loc>
-    
-    <lastmod>2020-08-21</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://nimrod.life/2020/08/18/Your-problem-with-Vim-is-that-you-don-t-grok-vi/</loc>
     
     <lastmod>2020-08-21</lastmod>
     
@@ -94,13 +101,6 @@
   
   <url>
     <loc>http://nimrod.life/2019/04/07/sword-to-offer-13/</loc>
-    
-    <lastmod>2020-08-21</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://nimrod.life/2019/04/12/lazy-evaluation/</loc>
     
     <lastmod>2020-08-21</lastmod>
     
@@ -362,6 +362,13 @@
   
   <url>
     <loc>http://nimrod.life/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
+    <lastmod>2020-08-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://nimrod.life/tags/Vim/</loc>
     <lastmod>2020-08-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
