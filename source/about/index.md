@@ -4,9 +4,7 @@ date:
 layout: about
 ---
 
--   末流985CS大四
--   厂迷
--   弱鸡程序员
--   常年自闭
+-   在某AI公司写C++的混子
 
 ![](https://s1.ax1x.com/2018/12/01/FnNkgx.jpg)
+
