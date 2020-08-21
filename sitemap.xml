@@ -23,6 +23,20 @@
   </url>
   
   <url>
+    <loc>http://nimrod.life/about/index.html</loc>
+    
+    <lastmod>2020-08-21</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nimrod.life/2020/08/18/Your-problem-with-Vim-is-that-you-don-t-grok-vi/</loc>
+    
+    <lastmod>2020-08-21</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://nimrod.life/2018/11/28/edit-distance/</loc>
     
     <lastmod>2020-08-21</lastmod>
@@ -37,7 +51,35 @@
   </url>
   
   <url>
-    <loc>http://nimrod.life/about/index.html</loc>
+    <loc>http://nimrod.life/2019/04/24/Questions-to-interviewer/</loc>
+    
+    <lastmod>2020-08-21</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nimrod.life/2019/06/20/Typeclasses-in-Haskell/</loc>
+    
+    <lastmod>2020-08-21</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nimrod.life/2019/03/30/sword-to-offer-26/</loc>
+    
+    <lastmod>2020-08-21</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nimrod.life/2019/03/31/sword-to-offer-4/</loc>
+    
+    <lastmod>2020-08-21</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nimrod.life/2019/04/03/sword-to-offer-15/</loc>
     
     <lastmod>2020-08-21</lastmod>
     
@@ -65,21 +107,14 @@
   </url>
   
   <url>
-    <loc>http://nimrod.life/2019/04/24/Questions-to-interviewer/</loc>
+    <loc>http://nimrod.life/2018/12/31/written-in-the-end/</loc>
     
     <lastmod>2020-08-21</lastmod>
     
   </url>
   
   <url>
-    <loc>http://nimrod.life/2019/06/20/Typeclasses-in-Haskell/</loc>
-    
-    <lastmod>2020-08-21</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://nimrod.life/2020/08/18/Your-problem-with-Vim-is-that-you-don-t-grok-vi/</loc>
+    <loc>http://nimrod.life/2018/03/27/2018-3-27-first-markdown/</loc>
     
     <lastmod>2020-08-21</lastmod>
     
@@ -121,42 +156,7 @@
   </url>
   
   <url>
-    <loc>http://nimrod.life/2019/03/30/sword-to-offer-26/</loc>
-    
-    <lastmod>2020-08-21</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://nimrod.life/2019/03/31/sword-to-offer-4/</loc>
-    
-    <lastmod>2020-08-21</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://nimrod.life/2019/04/03/sword-to-offer-15/</loc>
-    
-    <lastmod>2020-08-21</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://nimrod.life/2018/09/13/2018-09-13/</loc>
-    
-    <lastmod>2020-08-21</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://nimrod.life/2018/09/26/2018-09-26/</loc>
-    
-    <lastmod>2020-08-21</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://nimrod.life/2018/10/12/2018-10-12/</loc>
     
     <lastmod>2020-08-21</lastmod>
     
@@ -170,14 +170,14 @@
   </url>
   
   <url>
-    <loc>http://nimrod.life/2018/12/31/written-in-the-end/</loc>
+    <loc>http://nimrod.life/2018/09/13/2018-09-13/</loc>
     
     <lastmod>2020-08-21</lastmod>
     
   </url>
   
   <url>
-    <loc>http://nimrod.life/2018/03/27/2018-3-27-first-markdown/</loc>
+    <loc>http://nimrod.life/2018/10/12/2018-10-12/</loc>
     
     <lastmod>2020-08-21</lastmod>
     
@@ -200,28 +200,7 @@
 
   
   <url>
-    <loc>http://nimrod.life/tags/live/</loc>
-    <lastmod>2020-08-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://nimrod.life/tags/Python/</loc>
-    <lastmod>2020-08-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://nimrod.life/tags/Ubuntu/</loc>
-    <lastmod>2020-08-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://nimrod.life/tags/Linux/</loc>
     <lastmod>2020-08-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -243,6 +222,27 @@
   
   <url>
     <loc>http://nimrod.life/tags/%E9%9D%9E%E5%B8%B8%E6%B2%A1%E6%9C%89%E5%A4%B4%E7%BB%AA%E7%9A%84%E6%80%9D%E8%80%83/</loc>
+    <lastmod>2020-08-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://nimrod.life/tags/live/</loc>
+    <lastmod>2020-08-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://nimrod.life/tags/Ubuntu/</loc>
+    <lastmod>2020-08-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://nimrod.life/tags/Linux/</loc>
     <lastmod>2020-08-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -370,14 +370,14 @@
 
   
   <url>
-    <loc>http://nimrod.life/categories/%E6%9D%82%E8%B0%88/</loc>
+    <loc>http://nimrod.life/categories/%E6%8A%80%E6%9C%AF%E5%90%91/</loc>
     <lastmod>2020-08-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://nimrod.life/categories/%E6%8A%80%E6%9C%AF%E5%90%91/</loc>
+    <loc>http://nimrod.life/categories/%E6%9D%82%E8%B0%88/</loc>
     <lastmod>2020-08-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
