@@ -2,191 +2,191 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://nimrod.life/2020/08/18/Your-problem-with-Vim-is-that-you-don-t-grok-vi/</loc>
+    <loc>http://nimrod.life/timeline/index.html</loc>
     
-    <lastmod>2020-08-20</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://nimrod.life/about/index.html</loc>
-    
-    <lastmod>2020-04-12</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://nimrod.life/2019/06/20/Typeclasses-in-Haskell/</loc>
-    
-    <lastmod>2019-06-21</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://nimrod.life/2019/04/24/Questions-to-interviewer/</loc>
-    
-    <lastmod>2019-06-20</lastmod>
+    <lastmod>2020-08-21</lastmod>
     
   </url>
   
   <url>
     <loc>http://nimrod.life/tags/index.html</loc>
     
-    <lastmod>2019-04-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://nimrod.life/timeline/index.html</loc>
-    
-    <lastmod>2019-04-24</lastmod>
+    <lastmod>2020-08-21</lastmod>
     
   </url>
   
   <url>
     <loc>http://nimrod.life/demos/index.html</loc>
     
-    <lastmod>2019-04-24</lastmod>
+    <lastmod>2020-08-21</lastmod>
     
   </url>
   
   <url>
     <loc>http://nimrod.life/2018/11/28/edit-distance/</loc>
     
-    <lastmod>2019-04-24</lastmod>
+    <lastmod>2020-08-21</lastmod>
     
   </url>
   
   <url>
     <loc>http://nimrod.life/2018/12/01/substring-in-edit-distance/</loc>
     
-    <lastmod>2019-04-24</lastmod>
+    <lastmod>2020-08-21</lastmod>
     
   </url>
   
   <url>
-    <loc>http://nimrod.life/2019/03/30/sword-to-offer-26/</loc>
+    <loc>http://nimrod.life/about/index.html</loc>
     
-    <lastmod>2019-04-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://nimrod.life/2019/03/31/sword-to-offer-4/</loc>
-    
-    <lastmod>2019-04-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://nimrod.life/2019/04/03/sword-to-offer-15/</loc>
-    
-    <lastmod>2019-04-24</lastmod>
+    <lastmod>2020-08-21</lastmod>
     
   </url>
   
   <url>
     <loc>http://nimrod.life/2019/04/04/convert-to-base-2/</loc>
     
-    <lastmod>2019-04-24</lastmod>
+    <lastmod>2020-08-21</lastmod>
     
   </url>
   
   <url>
     <loc>http://nimrod.life/2019/04/07/sword-to-offer-13/</loc>
     
-    <lastmod>2019-04-24</lastmod>
+    <lastmod>2020-08-21</lastmod>
     
   </url>
   
   <url>
     <loc>http://nimrod.life/2019/04/12/lazy-evaluation/</loc>
     
-    <lastmod>2019-04-24</lastmod>
+    <lastmod>2020-08-21</lastmod>
     
   </url>
   
   <url>
-    <loc>http://nimrod.life/2018/12/31/written-in-the-end/</loc>
+    <loc>http://nimrod.life/2019/04/24/Questions-to-interviewer/</loc>
     
-    <lastmod>2019-04-24</lastmod>
+    <lastmod>2020-08-21</lastmod>
     
   </url>
   
   <url>
-    <loc>http://nimrod.life/2018/03/27/2018-3-27-first-markdown/</loc>
+    <loc>http://nimrod.life/2019/06/20/Typeclasses-in-Haskell/</loc>
     
-    <lastmod>2019-04-24</lastmod>
+    <lastmod>2020-08-21</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nimrod.life/2020/08/18/Your-problem-with-Vim-is-that-you-don-t-grok-vi/</loc>
+    
+    <lastmod>2020-08-21</lastmod>
     
   </url>
   
   <url>
     <loc>http://nimrod.life/2018/04/16/2018-4-16-April/</loc>
     
-    <lastmod>2019-04-24</lastmod>
+    <lastmod>2020-08-21</lastmod>
     
   </url>
   
   <url>
     <loc>http://nimrod.life/2018/05/11/2018-5-11-CondaValueError/</loc>
     
-    <lastmod>2019-04-24</lastmod>
+    <lastmod>2020-08-21</lastmod>
     
   </url>
   
   <url>
     <loc>http://nimrod.life/2018/07/28/2018-7-28/</loc>
     
-    <lastmod>2019-04-24</lastmod>
+    <lastmod>2020-08-21</lastmod>
     
   </url>
   
   <url>
     <loc>http://nimrod.life/2019/03/21/HandWrtingKNN/</loc>
     
-    <lastmod>2019-04-24</lastmod>
+    <lastmod>2020-08-21</lastmod>
     
   </url>
   
   <url>
     <loc>http://nimrod.life/2019/03/29/sword-to-offer-3/</loc>
     
-    <lastmod>2019-04-24</lastmod>
+    <lastmod>2020-08-21</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nimrod.life/2019/03/30/sword-to-offer-26/</loc>
+    
+    <lastmod>2020-08-21</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nimrod.life/2019/03/31/sword-to-offer-4/</loc>
+    
+    <lastmod>2020-08-21</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nimrod.life/2019/04/03/sword-to-offer-15/</loc>
+    
+    <lastmod>2020-08-21</lastmod>
     
   </url>
   
   <url>
     <loc>http://nimrod.life/2018/09/13/2018-09-13/</loc>
     
-    <lastmod>2019-04-24</lastmod>
+    <lastmod>2020-08-21</lastmod>
     
   </url>
   
   <url>
     <loc>http://nimrod.life/2018/09/26/2018-09-26/</loc>
     
-    <lastmod>2019-04-24</lastmod>
+    <lastmod>2020-08-21</lastmod>
     
   </url>
   
   <url>
     <loc>http://nimrod.life/2018/10/12/2018-10-12/</loc>
     
-    <lastmod>2019-04-24</lastmod>
+    <lastmod>2020-08-21</lastmod>
     
   </url>
   
   <url>
     <loc>http://nimrod.life/2018/12/24/About_Learning/</loc>
     
-    <lastmod>2019-04-24</lastmod>
+    <lastmod>2020-08-21</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nimrod.life/2018/12/31/written-in-the-end/</loc>
+    
+    <lastmod>2020-08-21</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nimrod.life/2018/03/27/2018-3-27-first-markdown/</loc>
+    
+    <lastmod>2020-08-21</lastmod>
     
   </url>
   
   <url>
     <loc>http://nimrod.life/404.html</loc>
     
-    <lastmod>2019-04-24</lastmod>
+    <lastmod>2020-08-21</lastmod>
     
   </url>
   
